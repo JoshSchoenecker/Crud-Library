@@ -1,0 +1,4 @@
+bin
+obj
+setup.sql
+appsettings.Development.json
