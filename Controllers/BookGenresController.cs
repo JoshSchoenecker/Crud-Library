@@ -30,6 +30,19 @@ namespace crudLibrary.Controllers
             }
         }
 
+        //NOTE Delete Request
+        [HttpDelete("{id}")] 
+        public ActionResult<BookGenre> Delete(int id)
+        {
+            try
+            {
+                return Ok(_bgs.Delete(id));
+            }
+            catch (System.Exception err)
+            {
+            return BadRequest(err.Message);  
+            }
+        }
     }
 
 }

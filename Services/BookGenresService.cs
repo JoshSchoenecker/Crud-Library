@@ -20,5 +20,14 @@ namespace crudLibrary.Services
             BookGenre createdBookGenre = _repo.Create(newBookGenre);
             return createdBookGenre;
         }
+
+        internal string Delete(int id)
+        {
+            if(_repo.Delete(id))
+            {
+                return "Deleted!";
+            }
+            throw new Exception("Can Not Delete, Invalid Id");
+        }
     }
 }
