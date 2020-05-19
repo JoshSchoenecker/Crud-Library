@@ -49,5 +49,17 @@ namespace crudLibrary.Repositories
             int affectedRows = _db.Execute(sql, new { id });
             return affectedRows == 1;
         }
+
+        // NOTE Put Requests
+        internal Book CheckOut(Book bookToUpdate)
+        {
+            string sql = @"
+            UPDATE books
+            SET
+                isAvailable = @IsAvailable
+            WHERE id = @Id";
+            _db.Execute(sql, bookToUpdate);
+            return bookToUpdate;
+        }
     }
 }

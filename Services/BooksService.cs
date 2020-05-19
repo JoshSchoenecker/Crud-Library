@@ -30,8 +30,6 @@ namespace crudLibrary.Services
             }
             return foundBook;
         }
-        // NOTE Create Request
-
 
         // NOTE Delete Request
         internal Book Delete(int id)
@@ -44,10 +42,19 @@ namespace crudLibrary.Services
             throw new Exception("Invalid ID");
         }
 
+        // NOTE Create Request
         internal Book Create(Book newBook)
         {
             Book createdBook = _repo.Create(newBook);
             return createdBook;
+        }
+
+        // NOTE Pute Requests
+        internal Book CheckOut(int id, Book updatedBook)
+        {
+            Book foundBook = GetById(id);
+            foundBook.IsAvailable = updatedBook.IsAvailable;
+            return _repo.CheckOut(foundBook);
         }
     }
 }

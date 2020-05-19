@@ -57,7 +57,7 @@ namespace crudLibrary.Controllers
             }
             catch (System.Exception err)
             {
-            return BadRequest(err.Message);                
+                return BadRequest(err.Message);
             }
         }
 
@@ -68,10 +68,24 @@ namespace crudLibrary.Controllers
             try
             {
                 return Ok(_bs.Delete(id));
-            }       
+            }
             catch (System.Exception err)
             {
-                return BadRequest(err.Message);                
+                return BadRequest(err.Message);
+            }
+        }
+
+        // NOTE Put Request
+        [HttpPut("{id}")]
+        public ActionResult<Book> CheckOut(int id, [FromBody] Book updatedBook)
+        {
+            try
+            {
+                return Ok(_bs.CheckOut(id, updatedBook));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
             }
         }
 
