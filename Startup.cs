@@ -34,6 +34,10 @@ namespace crudLibrary
             services.AddScoped<IDbConnection>(x => CreateDbConnection());
             services.AddTransient<BooksService>();
             services.AddTransient<BooksRepository>();
+            services.AddTransient<GenresService>();
+            services.AddTransient<GenresRepository>();
+            services.AddTransient<BookGenresService>();
+            services.AddTransient<BookGenresRepository>();
         }
 
         private IDbConnection CreateDbConnection()

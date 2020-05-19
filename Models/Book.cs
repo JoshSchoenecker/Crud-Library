@@ -16,5 +16,13 @@ namespace crudLibrary.Models
             public string Description {get;set;}
             public decimal Price { get; set; }
             public bool IsAvailable { get; set; }
+
+            public string CreatorEmail { get; set; }
+        }
+
+        public class BookGenreViewModel : Book
+        {
+            public int BookGenreId { get; set; }
+            public string Genre { get; set; }
         }
     }

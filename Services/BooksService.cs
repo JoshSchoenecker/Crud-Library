@@ -1,8 +1,8 @@
-
 using System;
 using System.Collections.Generic;
 using crudLibrary.Models;
 using crudLibrary.Repositories;
+
 namespace crudLibrary.Services
 {
 
@@ -30,6 +30,14 @@ namespace crudLibrary.Services
             }
             return foundBook;
         }
+        internal IEnumerable<Book> GetBooksByUserEmail(string creatorEmail)
+        {
+            return _repo.GetBooksByUserEmail(creatorEmail);
+        }
+   internal IEnumerable<BookGenreViewModel> GetBooksByGenreId(int id)
+        {
+            return _repo.GetBooksByGenreId(id);
+        }
 
         // NOTE Delete Request
         internal Book Delete(int id)
@@ -56,5 +64,7 @@ namespace crudLibrary.Services
             foundBook.IsAvailable = updatedBook.IsAvailable;
             return _repo.CheckOut(foundBook);
         }
+
+
     }
 }

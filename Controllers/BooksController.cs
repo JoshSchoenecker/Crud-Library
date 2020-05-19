@@ -46,13 +46,27 @@ namespace crudLibrary.Controllers
                 return BadRequest(err.Message);
             }
         }
+        [HttpGet("user")]
+        public ActionResult<Book> GetBooksByUserEmail()
+        {
+            try
+            {
+                string creatorEmail = "josh@josh.com"; ;
+                return Ok(_bs.GetBooksByUserEmail(creatorEmail));
+            }
+            catch (System.Exception err)
+            {
+                return BadRequest(err.Message);
+            }
+        }
 
-        // NOTE Create Request
+        // NOTE Post Request
         [HttpPost]
         public ActionResult<Book> Create([FromBody] Book newBook)
         {
             try
             {
+                newBook.CreatorEmail = "josh@josh.com";
                 return Ok(_bs.Create(newBook));
             }
             catch (System.Exception err)
